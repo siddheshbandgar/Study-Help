@@ -23,7 +23,7 @@ export default function FileUploader() {
          toast.success('Upload Success');
          
           const data = { userId: formData.userId, doc: formData.doc, doc_link: formData.doc_link, description: formData.description, subject: formData.subject, branch:formData.branch, tags:formData.tags };
-          const url = "https://study-help.herokuapp.com/api/upload";
+          const url = "https://study-help.herokuapp.com/api/doc/create/" + localStorage.getItem("id");
           await axios.post(url, data)
             .then((response) => {
               console.log(response);
