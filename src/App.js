@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import SignIn from "./components/signin";
 import SignUp from "./components/signup";
@@ -45,6 +47,8 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/upload" component={FileUploader} />
       </Switch>
+
+      <ToastContainer/>
 
     </div></Router>
   );
