@@ -19,21 +19,30 @@ function App() {
           <Link className="navbar-brand" to={"/sign-in"}>Study Help</Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
+            { localStorage.getItem("id") === null  &&
+              <>
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-in"}>Sign In</Link>
-              </li>
+              </li> 
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
               </li>
+              </>
+            }
+            
+            { localStorage.getItem("id") != null  &&
+              <>
               <li className="nav-item">
                 <Link className="nav-link" to={"/profile"}>Profile</Link>
-              </li>
+              </li> 
               <li className="nav-item">
                 <Link className="nav-link" to={"/home"}>Home</Link>
-              </li>
+              </li> 
               <li className="nav-item">
                 <Link className="nav-link" to={"/upload"}>Upload File</Link>
               </li>
+              </>
+            }
             </ul>
           </div>
         </div>
