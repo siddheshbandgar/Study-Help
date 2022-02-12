@@ -21,7 +21,8 @@ export default function Home() {
         },
       });
       setAssignments(response.data);
-      console.log(response);
+      console.log(response.data);
+      console.log(assignments);
     } catch (e) {
       if (e.response && e.response.status === 500) {
         toast.error(e.response.data.message, {
@@ -51,6 +52,7 @@ export default function Home() {
       }
     }
   };
+  
   useEffect(() => {
     performAPICall();
   }, []);
@@ -58,9 +60,9 @@ export default function Home() {
     <div className="container" style={{ marginTop: "100px" }}>
       {assignments.length ? (
         assignments.map((assignment) => (
-          <Card
-            assignment={assignment}
-          />
+          <div>
+            <Card assignment={assignment} />
+          </div>
         ))
       ) : (
         <Box className="loading">
@@ -68,7 +70,7 @@ export default function Home() {
           <h4>No assignments found</h4>
         </Box>
       )}
-      <Card/>
+      {/* <Card /> */}
     </div>
   );
 }

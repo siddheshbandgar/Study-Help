@@ -24,32 +24,32 @@ export default function SignIn() {
       password: formData.password,
     };
     const url = "https://study-help.herokuapp.com/api/auth/signin";
-    await axios
-      .post(url, data)
-      .then((response) => {
-        persistLogin(
-          response.data.token,
-          response.data.user.uname,
-          response.data.user.email,
-          response.data.user.role, 
-          response.data.user._id
-        );
+    try{
+      const response = await axios
+      .post(url, data);
+       persistLogin(
+         response.data.token,
+         response.data.user.uname,
+         response.data.user.email,
+         response.data.user.role,
+         response.data.user._id
+       );
 
-        console.log(response);
-        const msg = "Logged in successfully";
-        toast.success(msg, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        history.push("/home");
-      })
-      .catch((error) => {
-        if (error.response) {
+       console.log(response);
+       const msg = "Logged in successfully";
+       toast.success(msg, {
+         position: "top-right",
+         autoClose: 5000,
+         hideProgressBar: false,
+         closeOnClick: true,
+         pauseOnHover: true,
+         draggable: true,
+         progress: undefined,
+       });
+       console.log(localStorage.getItem("token"));
+       history.push("/home");
+    }catch(error){
+       if (error.response) {
           toast.error(error.response.data.message, {
             position: "top-right",
             autoClose: 5000,
@@ -73,7 +73,38 @@ export default function SignIn() {
             }
           );
         }
-      });
+
+    }
+    
+      // .then((response) => {
+       
+      // })
+      // .catch((error) => {
+      //   if (error.response) {
+      //     toast.error(error.response.data.message, {
+      //       position: "top-right",
+      //       autoClose: 5000,
+      //       hideProgressBar: false,
+      //       closeOnClick: true,
+      //       pauseOnHover: true,
+      //       draggable: true,
+      //       progress: undefined,
+      //     });
+      //   } else {
+      //     toast.error(
+      //       "Something went wrong. Check that the backend is running, reachable and returns valid JSON.",
+      //       {
+      //         position: "top-right",
+      //         autoClose: 5000,
+      //         hideProgressBar: false,
+      //         closeOnClick: true,
+      //         pauseOnHover: true,
+      //         draggable: true,
+      //         progress: undefined,
+      //       }
+      //     );
+      //   }
+      //});
   };
 
   return (

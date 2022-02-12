@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { withRouter } from "react-router";
 import { useHistory, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
  import "react-toastify/dist/ReactToastify.css";
@@ -41,11 +41,6 @@ export default function SignUp() {
             draggable: true,
             progress: undefined,
           });
-          // enqueueSnackbar(msg, {
-          //   variant: "success",
-          //   autoHideDuration: 3000,
-          // });
-          // //console.assert("Registered successfully");
           history.push("/sign-in");
         })
         .catch((error) => {
@@ -60,11 +55,6 @@ export default function SignUp() {
               draggable: true,
               progress: undefined,
             });
-            // enqueueSnackbar(error.response.data.message, {
-            //   variant: "error",
-            //   autoHideDuration: 3000,
-            // });
-            //console.assert(error.response.data.message);
           } else {
              toast.warning("Something went wrong. Check that the backend is running and rechable", {
                position: "top-right",
@@ -75,14 +65,7 @@ export default function SignUp() {
                draggable: true,
                progress: undefined,
              });
-            // enqueueSnackbar(
-            //   "Something went wrong. Check that the backend is running, reachable and returns valid JSON.",
-            //   {
-            //     variant: "warning",
-            //     autoHideDuration: 3000,
-            //   }
-            // );
-            //console.assert("Something went wrong. Check that the backend is running, reachable and returns valid JSON.");
+
           }
          } );
         
