@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 export default function FileUploader() {
     const [formData, setFormData] = useState({
-        doc: "doc",
+        doc: React.createRef(),
         doc_link: "http//docs.com/file_name",
         description: "Some description about doc",
         subject: "Cloud Computing",
@@ -17,10 +17,25 @@ export default function FileUploader() {
     };
 
     const onSubmit = async (formData) => {
-        
+        const formD = new FormData();
+
+          for(let key in formData)
+          {
+              if(key!="doc")
+              {
+                 formD.append(key, formData[key])
+              }
+          }
+          const userId = localStorage.getItem("id");
+          formD.append("doc", formData.doc.current.files[0])
+          formD.append("userId",userId)
+
+          // Details of the uploaded file
+        console.log(formD.doc);
+
          console.log("submit function Called");
          //toast.success('Upload Success');
-         const userId = localStorage.getItem("id");
+         
          const token = localStorage.getItem("token");
             const headers = {
                 "Content-Type": "application/json",
@@ -28,10 +43,10 @@ export default function FileUploader() {
                 Accept: "application/json",
             };
          
-          const data = { userId: userId, doc: formData.doc, doc_link: formData.doc_link, description: formData.description, subject: formData.subject, branch:formData.branch, tags:formData.tags };
-          console.log(data);
+          //const data = { userId: userId, doc: formData.doc, doc_link: formData.doc_link, description: formData.description, subject: formData.subject, branch:formData.branch, tags:formData.tags };
+          console.log(formD);
           const url = "https://study-help.herokuapp.com/api/doc/create/" + localStorage.getItem("id");
-          await axios.post(url, data, { headers } )
+          await axios.post(url, formD, { headers } )
             .then((response) => {
               console.log(response);
               const msg = "Uploaded Successfully";
@@ -55,66 +70,70 @@ export default function FileUploader() {
                     <div className="form-group files">
                         <label>Upload Your File </label>
                         <input type="file"
-                            onChange={onInputChange}
                             className="form-control"
-                            name="doc"
-                            multiple/>
+                            ref={formData.doc}
+                            />
                     </div>
-                    <div class="form-group">
-                        <label for="filelink">File Link</label>
+                    <div className="form-group">
+                        <label htmlFor="filelink">File Link</label>
                         <input 
                             type="text" 
-                            class="form-control" 
+                            className="form-control" 
                             id="filelink" 
                             name="doc_link"
+                            onChange = {onInputChange}
                             value={formData.doc_link}
                         />
                     </div>
 
-                    <div class="form-group">
-                        <label for="desc">Description</label>
+                    <div className="form-group">
+                        <label htmlFor="desc">Description</label>
                         <textarea 
-                            class="form-control" 
+                            className="form-control" 
                             id="desc" 
                             rows="3"
                             name="description"
+                            onChange = {onInputChange}
                             value={formData.description}
                         ></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="subj">Subject</label>
+                    <div className="form-group">
+                        <label htmlFor="subj">Subject</label>
                         <input 
                             type="text" 
-                            class="form-control" 
+                            className="form-control" 
                             id="subject" 
                             name="sub"
+                            onChange = {onInputChange}
                             value={formData.subject}
                         />
                     </div>
-                    <div class="form-group">
-                        <label for="branch">Branch</label>
+                    <div className="form-group">
+                        <label htmlFor="branch">Branch</label>
                         <input 
                             type="text" 
-                            class="form-control" 
+                            className="form-control" 
                             id="branch" 
                             name="branch"
+                            onChange = {onInputChange}
                             value={formData.branch}
                         />
                     </div>
-                    <div class="form-group">
-                        <label for="tags">Tags</label>
+                    <div className="form-group">
+                        <label htmlFor="tags">Tags</label>
                         <input 
                             type="text" 
-                            class="form-control" 
+                            className="form-control" 
                             id="tags" 
                             name="tags"
+                            onChange = {onInputChange}
                             value={formData.tags}
                         />
                     </div>
 
                     <button 
                         type="button" 
-                        class="btn btn-success"
+                        className="btn btn-success"
                         onClick={() => onSubmit(formData)}
                     >Submit</button>
                 </form>
