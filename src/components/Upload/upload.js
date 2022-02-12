@@ -12,7 +12,7 @@ export default function FileUploader() {
 
     return (
         <div className="auth-wrapper">
-            <div className="container" style={{background: "white", padding: "40px"}} >
+            <div className="container" style={{ marginTop: '100px', background: "white", padding: "40px"}} >
                 <form method="post" action="#" id="#" onSubmit={onSubmit}>
                     <div className="form-group files">
                         <label>Upload Your File </label>
@@ -21,22 +21,26 @@ export default function FileUploader() {
                             className="form-control"
                             multiple/>
                     </div>
+                    <div class="form-group">
+                        <label for="filelink">File Link</label>
+                        <input type="text" class="form-control" id="filelink" />
+                    </div>
 
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <label for="desc">Description</label>
+                        <textarea class="form-control" id="desc" rows="3"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Subject</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" />
+                        <label for="subj">Subject</label>
+                        <input type="text" class="form-control" id="subj" />
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Branch</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" />
+                        <label for="branch">Branch</label>
+                        <input type="text" class="form-control" id="branch" />
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Tags</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" />
+                        <label for="tags">Tags</label>
+                        <input type="text" class="form-control" id="tags" />
                     </div>
 
 
