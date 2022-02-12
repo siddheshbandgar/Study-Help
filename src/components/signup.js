@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 
 export default function SignUp (){
     
         return (
+            <div className="auth-wrapper">
+            <div className="auth-inner">
             <form>
                 <h3>Sign Up</h3>
 
@@ -31,6 +33,8 @@ export default function SignUp (){
                     Already registered <a href="#">sign in?</a>
                 </p>
             </form>
+            </div>
+            </div>
         );
     
 }

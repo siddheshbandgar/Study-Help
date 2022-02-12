@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import SignIn from "./components/signin";
 import SignUp from "./components/signup";
+import Profile from "./components/Profile/profile";
+import Home from "./components/Home/home";
 
 function App() {
   return (<Router>
@@ -20,20 +22,25 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/profile"}>Profile</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/home"}>Home</Link>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
 
-      <div className="auth-wrapper">
-        <div className="auth-inner">
-          <Switch>
-            <Route exact path='/' component={SignIn} />
-            <Route path="/sign-in" component={SignIn} />
-            <Route path="/sign-up" component={SignUp} />
-          </Switch>
-        </div>
-      </div>
+      <Switch>
+        <Route exact path='/' component={SignIn} />
+        <Route path="/sign-in" component={SignIn} />
+        <Route path="/sign-up" component={SignUp} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/home" component={Home} />
+      </Switch>
+
     </div></Router>
   );
 }

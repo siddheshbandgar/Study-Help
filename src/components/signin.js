@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 
 export default function SignIn (){
    
         return (
+            <div className="auth-wrapper">
+            <div className="auth-inner">
             <form>
                 <h3>Sign In</h3>
 
@@ -28,6 +30,8 @@ export default function SignIn (){
                     Forgot <a href="#">password?</a>
                 </p>
             </form>
+            </div>
+            </div>
         );
     
 }
