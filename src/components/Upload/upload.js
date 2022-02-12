@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 
 export default function FileUploader() {
     const [formData, setFormData] = useState({
-        userId: "kush",
         doc: "doc",
         doc_link: "http//docs.com/file_name",
         description: "Some description about doc",
@@ -18,13 +17,21 @@ export default function FileUploader() {
     };
 
     const onSubmit = async (formData) => {
-        console.log(formData);
-         console.log("Response function Called");
-         toast.success('Upload Success');
+        
+         console.log("submit function Called");
+         //toast.success('Upload Success');
+         const userId = localStorage.getItem("id");
+         const token = localStorage.getItem("token");
+            const headers = {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+                Accept: "application/json",
+            };
          
-          const data = { userId: formData.userId, doc: formData.doc, doc_link: formData.doc_link, description: formData.description, subject: formData.subject, branch:formData.branch, tags:formData.tags };
-          const url = "https://study-help.herokuapp.com/api/upload";
-          await axios.post(url, data)
+          const data = { userId: userId, doc: formData.doc, doc_link: formData.doc_link, description: formData.description, subject: formData.subject, branch:formData.branch, tags:formData.tags };
+          console.log(data);
+          const url = "https://study-help.herokuapp.com/api/doc/create/" + localStorage.getItem("id");
+          await axios.post(url, data, { headers } )
             .then((response) => {
               console.log(response);
               const msg = "Uploaded Successfully";
