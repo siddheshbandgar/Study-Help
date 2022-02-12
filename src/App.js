@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import SignIn from "./components/signin";
 import SignUp from "./components/signup";
 import Profile from "./components/Profile/profile";
 import Home from "./components/Home/home";
+import FileUploader from "./components/Upload/upload";
 
 function App() {
   return (<Router>
@@ -28,6 +29,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/home"}>Home</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/upload"}>Upload File</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -39,6 +43,7 @@ function App() {
         <Route path="/sign-up" component={SignUp} />
         <Route path="/profile" component={Profile} />
         <Route path="/home" component={Home} />
+        <Route path="/upload" component={FileUploader} />
       </Switch>
 
     </div></Router>
