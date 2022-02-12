@@ -16,6 +16,7 @@ export default function SignIn() {
     localStorage.setItem("email", email);
     localStorage.setItem("role", role);
     localStorage.setItem("id", id);
+    
   };
   const login = async (formData) => {
     const data = {

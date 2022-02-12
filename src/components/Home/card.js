@@ -1,7 +1,7 @@
 import { margin } from "@mui/system";
 import React, { Component } from "react";
 
-export default function Card (){
+export default function Card ({assignment}){
     return (
       //   <div class="body__main">
       <div class="feed">
