@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useSnackbar } from "notistack";
+
 import { useHistory, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+ import "react-toastify/dist/ReactToastify.css";
 export default function SignUp() {
   const [formData, setFormData] = useState({
     first_name: "Siddhesh",
@@ -30,6 +32,15 @@ export default function SignUp() {
         .then((response) => {
           console.log(response);
           const msg = "Registered successfully";
+          toast.success(msg, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           // enqueueSnackbar(msg, {
           //   variant: "success",
           //   autoHideDuration: 3000,
@@ -40,12 +51,30 @@ export default function SignUp() {
         .catch((error) => {
           console.log(error);
           if (error.response) {
+            toast.error(error.response.data.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
             // enqueueSnackbar(error.response.data.message, {
             //   variant: "error",
             //   autoHideDuration: 3000,
             // });
             //console.assert(error.response.data.message);
           } else {
+             toast.warning("Something went wrong. Check that the backend is running and rechable", {
+               position: "top-right",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+             });
             // enqueueSnackbar(
             //   "Something went wrong. Check that the backend is running, reachable and returns valid JSON.",
             //   {

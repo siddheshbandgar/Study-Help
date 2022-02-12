@@ -3,23 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { SnackbarProvider } from "notistack";
+  import { ToastContainer, toast } from "react-toastify";
+
+  import "react-toastify/dist/ReactToastify.css";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <SnackbarProvider
-            maxSnack={1}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
-            }}
-            preventDuplicate
-          >
-      
-          </SnackbarProvider>
+    <ToastContainer
+      position="bottom-center"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
