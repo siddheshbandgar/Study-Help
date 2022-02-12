@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
 export default function SignUp (){
     
         return (
-          <div className="auth-wrapper">
+            <div className="auth-wrapper">
             <div className="auth-inner">
-              <form className="overflow-auto">
+            <form>
                 <h3>Sign Up</h3>
 
                 <div className="form-group">
