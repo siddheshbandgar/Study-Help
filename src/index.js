@@ -5,7 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import SignIn from "./components/signin";
+import SignUp from "./components/signup";
+import Profile from "./components/Profile/profile";
+import Home from "./components/Home/home";
+import FileUploader from "./components/Upload/upload";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,6 +26,14 @@ ReactDOM.render(
         draggable
         pauseOnHover
       />
+      <Switch>
+        <Route exact path="/" component={SignIn} />
+        <Route path="/sign-in" component={SignIn} />
+        <Route path="/sign-up" component={SignUp} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/home" component={Home} />
+        <Route path="/upload" component={FileUploader} />
+      </Switch>
       <App />
     </BrowserRouter>
   </React.StrictMode>,

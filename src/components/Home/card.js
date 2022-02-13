@@ -5,7 +5,7 @@ import { Rating } from "@mui/material";
 export default function Card({ assignment }) {
   const handleLike = () => {};
   const handleDisLike = () => {};
-  const getDoc = () => {};
+  const getDoc = (file_link) => { };
   return (
     //   <div class="body__main">
     <div class="feed">
@@ -20,7 +20,7 @@ export default function Card({ assignment }) {
               <h2>{assignment.subject}</h2>
             </div>
             <div className="row" id="subrow2">
-              <p>Date Posted On: {assignment.date.slice(0,10)} </p>
+              <p>Date Posted On: {assignment.date.slice(0, 10)} </p>
               <p>
                 Rating:{" "}
                 <Rating name="read-only" value={assignment.rating} readOnly />
@@ -60,7 +60,7 @@ export default function Card({ assignment }) {
             <button
               style={{ color: "gray" }}
               className="material-icons"
-              onClick={getDoc}
+              onClick={() => getDoc(assignment.file_link)}
             >
               {" "}
               get_app{" "}

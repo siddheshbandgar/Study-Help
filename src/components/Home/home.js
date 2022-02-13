@@ -4,6 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Box } from "@mui/system";
+import Base from "../Base/base";
 import { SentimentDissatisfied } from "@mui/icons-material";
 
 export default function Home() {
@@ -57,20 +58,22 @@ export default function Home() {
     performAPICall();
   }, []);
   return (
-    <div className="container" style={{ marginTop: "100px" }}>
-      {assignments.length ? (
-        assignments.map((assignment) => (
-          <div>
-            <Card assignment={assignment} />
-          </div>
-        ))
-      ) : (
-        <Box className="loading">
-          <SentimentDissatisfied color="action" />
-          <h4>No assignments found</h4>
-        </Box>
-      )}
-      {/* <Card /> */}
-    </div>
+    <Base>
+      <div className="container" style={{ marginTop: "100px" }}>
+        {assignments.length ? (
+          assignments.map((assignment) => (
+            <div>
+              <Card assignment={assignment} />
+            </div>
+          ))
+        ) : (
+          <Box className="loading">
+            <SentimentDissatisfied color="action" />
+            <h4>No assignments found</h4>
+          </Box>
+        )}
+        {/* <Card /> */}
+      </div>
+    </Base>
   );
 }

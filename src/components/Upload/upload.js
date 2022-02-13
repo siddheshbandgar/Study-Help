@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Base from "../Base/base";
 
 export default function FileUploader() {
   const [formData, setFormData] = useState({
@@ -68,82 +69,84 @@ export default function FileUploader() {
   };
 
   return (
-    <div className="auth-wrapper">
-      <div
-        className="container"
-        style={{ marginTop: "100px", background: "white", padding: "40px" }}
-      >
-        <form>
-          <div className="form-group files">
-            <label>Upload Your File </label>
-            <input type="file" className="form-control" ref={formData.doc} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="filelink">File Link</label>
-            <input
-              type="text"
-              className="form-control"
-              id="filelink"
-              name="doc_link"
-              onChange={onInputChange}
-              value={formData.doc_link}
-            />
-          </div>
+    <Base>
+      <div className="auth-wrapper">
+        <div
+          className="container"
+          style={{ marginTop: "100px", background: "white", padding: "40px" }}
+        >
+          <form>
+            <div className="form-group files">
+              <label>Upload Your File </label>
+              <input type="file" className="form-control" ref={formData.doc} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="filelink">File Link</label>
+              <input
+                type="text"
+                className="form-control"
+                id="filelink"
+                name="doc_link"
+                onChange={onInputChange}
+                value={formData.doc_link}
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="desc">Description</label>
-            <textarea
-              className="form-control"
-              id="desc"
-              rows="3"
-              name="description"
-              onChange={onInputChange}
-              value={formData.description}
-            ></textarea>
-          </div>
-          <div className="form-group">
-            <label htmlFor="subj">Subject</label>
-            <input
-              type="text"
-              className="form-control"
-              id="subject"
-              name="sub"
-              onChange={onInputChange}
-              value={formData.subject}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="branch">Branch</label>
-            <input
-              type="text"
-              className="form-control"
-              id="branch"
-              name="branch"
-              onChange={onInputChange}
-              value={formData.branch}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="tags">Tags</label>
-            <input
-              type="text"
-              className="form-control"
-              id="tags"
-              name="tags"
-              onChange={onInputChange}
-              value={formData.tags}
-            />
-          </div>
+            <div className="form-group">
+              <label htmlFor="desc">Description</label>
+              <textarea
+                className="form-control"
+                id="desc"
+                rows="3"
+                name="description"
+                onChange={onInputChange}
+                value={formData.description}
+              ></textarea>
+            </div>
+            <div className="form-group">
+              <label htmlFor="subj">Subject</label>
+              <input
+                type="text"
+                className="form-control"
+                id="subject"
+                name="sub"
+                onChange={onInputChange}
+                value={formData.subject}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="branch">Branch</label>
+              <input
+                type="text"
+                className="form-control"
+                id="branch"
+                name="branch"
+                onChange={onInputChange}
+                value={formData.branch}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="tags">Tags</label>
+              <input
+                type="text"
+                className="form-control"
+                id="tags"
+                name="tags"
+                onChange={onInputChange}
+                value={formData.tags}
+              />
+            </div>
 
-          <button
-            type="button"
-            className="btn btn-success"
-            onClick={() => onSubmit(formData)}
-          >
-            Submit
-          </button>
-        </form>
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={() => onSubmit(formData)}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </Base>
   );
 }
