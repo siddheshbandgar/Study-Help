@@ -12,6 +12,8 @@ import Profile from "./components/Profile/profile";
 import Home from "./components/Home/home";
 import FileUploader from "./components/Upload/upload";
 
+
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -34,7 +36,7 @@ ReactDOM.render(
         <Route path="/home" component={Home} />
         <Route path="/upload" component={FileUploader} />
       </Switch>
-      <App />
+      {/* <App /> */}
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
