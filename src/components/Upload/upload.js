@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Base from "../Base/base";
+import { useHistory } from "react-router-dom";
 
 export default function FileUploader() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,8 @@ export default function FileUploader() {
   const onInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const history = useHistory();
 
   const onSubmit = async (formData) => {
     const formD = new FormData();
@@ -55,6 +58,7 @@ export default function FileUploader() {
         console.log(response);
         const msg = "Uploaded Successfully";
         console.log(msg);
+        history.replace("/home");
       })
       .catch((error) => {
         console.log(error);

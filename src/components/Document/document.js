@@ -2,32 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom'
 import axios from "axios"
 import Base from "../Base/base";
+import { DockSharp } from "@mui/icons-material";
+import { Document, Page } from 'react-pdf';
 
 export default function DocumentViewer (){
-    const [doc, setDoc] = useState({description:"", subject:"", branch:"", rating:"", date:"", tags:"", url:""})
+    const [doc, setDoc] = useState({description:"", subject:"", branch:"", rating:"", date:"", tags:"", url:"", file:null, type:""})
     const params = useParams();
-    const loadDoc = async () => {
+    const loadFile = async () => {
         const token = localStorage.getItem("token");
         const headers = {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-            Accept: "application/json",
         };
-        const docId = params.docId;
-        const url = "https://study-help.herokuapp.com/api/doc/one/" + localStorage.getItem('id') + "/" + docId;
-        await axios.get(url, { headers } )
+        axios.get(doc.url, { headers } )
         .then((response) => {
             console.log(response.data);
             const data = response.data;
             console.log(data);
             setDoc({
-                description:data.description ,
-                subject: data.subject,
-              branch: data.branch,
-              rating: data.rating,
-              date: data.date,
-              tags: data.tags,
-              url: data.file_link
+                ...doc,
+                file: data
             });
 
         })
@@ -37,10 +30,58 @@ export default function DocumentViewer (){
         });
     }
 
+    useEffect(() => {
+        if(doc.url)
+        {
+            loadFile();
+        }
+    }, [doc.url])
+
+    const loadDoc = async () => {
+        const token = localStorage.getItem("token");
+        const headers = {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+        };
+        const docId = params.docId;
+        const url = "https://study-help.herokuapp.com/api/doc/one/" + localStorage.getItem('id') + "/" + docId;
+        axios.get(url, { headers } )
+        .then((response) => {
+            console.log(response.data);
+            const data = response.data;
+            console.log(data);
+            setDoc({
+                ...doc,
+                description:data.description ,
+                subject: data.subject,
+              branch: data.branch,
+              rating: data.rating,
+              date: data.date,
+              tags: data.tags,
+              url: data.file_link,
+              type: data.type
+            });
+
+        })
+        .catch(error => {
+            this.setState({ errorMessage: error.message });
+            console.error('There was an error!', error);
+        });
+        
+    }
+
     // This function will called only once
     useEffect(() => {
         loadDoc();
     }, [])
+
+    const [numPages, setNumPages] = useState(null);
+    const [pageNumber, setPageNumber] = useState(1);
+
+    function onDocumentLoadSuccess({ numPages }) {
+        setNumPages(numPages);
+    }
 
     return (
     <Base>
@@ -82,9 +123,15 @@ export default function DocumentViewer (){
                         </table>
                 </div>
                 <div class="col-sm-6">
+                    { doc && doc.type==="pdf" ? 
+                        <iframe src="http://www.africau.edu/images/default/sample.pdf" width="800" height="600"> </iframe>
+                        
+                        : <img src= {doc.url}
+                        width="800" height="600"
+                        />
+                    }
+                        
                     
-                    <iframe src="https://research.google.com/pubs/archive/44678.pdf"
-                    width="800" height="600"/>
                 </div>
             </div>
 
