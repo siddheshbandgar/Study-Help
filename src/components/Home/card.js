@@ -1,11 +1,16 @@
 import { margin } from "@mui/system";
 import React, { Component } from "react";
 import { Rating } from "@mui/material";
+import { useHistory } from "react-router-dom";
 
 export default function Card({ assignment }) {
   const handleLike = () => {};
   const handleDisLike = () => {};
-  const getDoc = (file_link) => { };
+  const history = useHistory();
+  const getDoc = (assignment) => {
+    console.log(assignment);
+    history.push(`/doc/${assignment._id}`)
+   };
   return (
     //   <div class="body__main">
     <div class="feed">
@@ -60,7 +65,7 @@ export default function Card({ assignment }) {
             <button
               style={{ color: "gray" }}
               className="material-icons"
-              onClick={() => getDoc(assignment.file_link)}
+              onClick={() => getDoc(assignment)}
             >
               {" "}
               get_app{" "}

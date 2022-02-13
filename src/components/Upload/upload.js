@@ -46,9 +46,9 @@ export default function FileUploader() {
 
     //const data = { userId: userId, doc: formData.doc, doc_link: formData.doc_link, description: formData.description, subject: formData.subject, branch:formData.branch, tags:formData.tags };
     console.log(formD);
-    //   const url = "https://study-help.herokuapp.com/api/doc/create/" + localStorage.getItem("id");
-    const url =
-      "http://localhost:8080/api/doc/create/" + localStorage.getItem("id");
+    const url = "https://study-help.herokuapp.com/api/doc/create/" + localStorage.getItem("id");
+    //const url =
+    //  "http://localhost:8080/api/doc/create/" + localStorage.getItem("id");
     await axios
       .post(url, formD, { headers })
       .then((response) => {

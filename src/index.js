@@ -11,6 +11,7 @@ import SignUp from "./components/signup";
 import Profile from "./components/Profile/profile";
 import Home from "./components/Home/home";
 import FileUploader from "./components/Upload/upload";
+import DocumentViewer from "./components/Document/document"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -33,6 +34,7 @@ ReactDOM.render(
         <Route path="/profile" component={Profile} />
         <Route path="/home" component={Home} />
         <Route path="/upload" component={FileUploader} />
+        <Route path="/doc/:docId" component={DocumentViewer} />
       </Switch>
       <App />
     </BrowserRouter>
