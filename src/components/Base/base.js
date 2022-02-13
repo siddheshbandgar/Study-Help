@@ -57,7 +57,7 @@ export default function Base({children}) {
                           localStorage.clear();
                           setIsLoggedIn(false);
                           window.location.reload();
-                         history.push("/");
+                         history.replace("/");
                         }}
                       >
                         Logout

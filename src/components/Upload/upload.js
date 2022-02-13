@@ -7,11 +7,11 @@ import { useHistory } from "react-router-dom";
 export default function FileUploader() {
   const [formData, setFormData] = useState({
     doc: React.createRef(),
-    doc_link: "http//docs.com/file_name",
-    description: "Some description about doc",
-    subject: "Cloud Computing",
-    branch: "Computer Engg",
-    tags: "CC, SEM8, Final Year",
+    doc_link: "",
+    description: "",
+    subject: "",
+    branch: "",
+    tags: "",
   });
 
   const onInputChange = (e) => {

@@ -3,7 +3,7 @@ import axios from "axios";
 import Base from "../Base/base";
 
 export default function Profile (){
-    const [user, setUser] = useState({username:"", email:"", branch:"", college:"", summary:""})
+    const [user, setUser] = useState({username:"", email:"", branch:"", college:"", summary:""});
     const loadUserData = async () => {
         console.log("Called API Function");
         console.log(localStorage.getItem('id'));
@@ -18,12 +18,6 @@ export default function Profile (){
         .then((response) => {
             const data = response.data;
             console.log(data);
-            // localStorage.setItem("branch", response.data['branch']);
-            // localStorage.setItem("college_name", response.data['college_name']);
-            // localStorage.setItem("coins", response.data['coins']);
-            // localStorage.setItem("email", response.data['email']);
-            // localStorage.setItem("summary", response.data['summary']);
-            // localStorage.setItem("uname", response.data['uname']);
             setUser({
               username:data.uname ,
               email: data.email,

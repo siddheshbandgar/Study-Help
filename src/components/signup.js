@@ -7,13 +7,13 @@ import Base from "./Base/base";
  import "react-toastify/dist/ReactToastify.css";
 export default function SignUp() {
   const [formData, setFormData] = useState({
-    first_name: "Siddhesh",
-    last_name: "Bandgar",
-    college_name: "Veermata Jijabai Technological Institute",
-    branch: "Computer Engineering",
-    summary: "We are team Optimizer Primes",
-    email: "siddheshbandgar@gmail.com",
-    password: "123456789",
+    first_name: "",
+    last_name: "",
+    college_name: "",
+    branch: "",
+    summary: "",
+    email: "",
+    password: "",
   });
 
     //const {enqueueSnackbar} = useSnackbar();
@@ -74,11 +74,8 @@ export default function SignUp() {
 
   return (
     <Base>
-      <div className="auth-wrapper">
-        <div
-          className="auth-inner"
-          style={{ marginTop: "100px", padding: "50px" }}
-        >
+      <div className="auth-wrapper" style={{ marginTop: "100px"}}>
+        <div className="auth-inner">
           <form>
             <h3>Sign Up</h3>
 

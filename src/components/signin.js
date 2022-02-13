@@ -108,7 +108,7 @@ export default function SignIn() {
   return (
     <Base>
       <div className="auth-wrapper">
-        <div className="auth-inner">
+        <div className="auth-inner" style={{marginTop:"100px"}}>
           <form>
             <h3>Sign In</h3>
 

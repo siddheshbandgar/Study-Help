@@ -13,6 +13,8 @@ import Home from "./components/Home/home";
 import FileUploader from "./components/Upload/upload";
 import DocumentViewer from "./components/Document/document"
 
+
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -36,7 +38,7 @@ ReactDOM.render(
         <Route path="/upload" component={FileUploader} />
         <Route path="/doc/:docId" component={DocumentViewer} />
       </Switch>
-      <App />
+      {/* <App /> */}
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
